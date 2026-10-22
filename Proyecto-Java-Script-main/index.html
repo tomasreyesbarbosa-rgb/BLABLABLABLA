@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tienda Fake · Catálogo y carrito</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="CSS/style.css">
+  <link rel="stylesheet" href="CSS/checkout.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1 class="brand">Tienda Fake</h1>
+    <button id="cart-toggle" class="cart-btn" aria-controls="cart" aria-expanded="false">
+      Carrito <span id="cart-count" class="badge">0</span>
+    </button>
+  </header>
+ 
+  <main class="layout">
+    <section class="toolbar" aria-label="Filtros">
+      <label class="field grow">Buscar
+        <input id="search" type="search" placeholder="Nombre o descripción del producto">
+      </label>
+      <label class="field">Categoría
+        <select id="category"><option value="all">Todas</option></select>
+      </label>
+      <label class="field">Ordenar por
+        <select id="sort">
+          <option value="default">Destacados</option>
+          <option value="price-asc">Precio: menor a mayor</option>
+          <option value="price-desc">Precio: mayor a menor</option>
+          <option value="name-asc">Nombre: A–Z</option>
+          <option value="name-desc">Nombre: Z–A</option>
+        </select>
+      </label>
+    </section>
+ 
+    <p id="status" class="status" role="status" aria-live="polite"></p>
+    <section id="products" class="grid" aria-label="Productos"></section>
+  </main>
+ 
+  <dialog id="product-viewer" class="product-viewer" aria-labelledby="viewer-title">
+    <button id="viewer-close" class="icon-btn viewer-close" type="button" aria-label="Cerrar detalles del producto">✕</button>
+    <div id="viewer-content" class="viewer-content">
+      <p id="viewer-category" class="card-cat"></p>
+      <h2 id="viewer-title" class="viewer-title"></h2>
+      <div class="viewer-image-wrap">
+        <img id="viewer-image" class="viewer-image" alt="">
+      </div>
+      <p id="viewer-description" class="viewer-description"></p>
+      <div class="viewer-footer">
+        <strong id="viewer-price" class="price"></strong>
+        <button id="viewer-add" class="btn" type="button">Agregar al carrito</button>
+      </div>
+    </div>
+    <button id="viewer-previous" class="viewer-arrow viewer-previous" type="button" aria-label="Ver producto anterior">‹</button>
+    <button id="viewer-next" class="viewer-arrow viewer-next" type="button" aria-label="Ver producto siguiente">›</button>
+    <p id="viewer-position" class="viewer-position" aria-live="polite"></p>
+  </dialog>
+
+  <div id="overlay" class="overlay" hidden></div>
+  <aside id="cart" class="cart" role="dialog" aria-modal="true" aria-labelledby="cart-title" aria-hidden="true" inert tabindex="-1">
+    <div class="cart-head">
+      <h2 id="cart-title">Tu carrito</h2>
+      <button id="cart-close" class="icon-btn" aria-label="Cerrar carrito">✕</button>
+    </div>
+    <ul id="cart-items" class="cart-items"></ul>
+    <div class="cart-foot">
+      <div class="cart-foot-row">
+        <p class="total">Total <strong id="cart-total">$0.00</strong></p>
+        <button id="cart-clear" class="btn ghost">Vaciar carrito</button>
+      </div>
+      <a id="checkout-btn" class="btn cart-checkout" href="compras.html">Finalizar compra</a>
+    </div>
+  </aside>
+ 
+  <!-- Scripts del catálogo (el orden importa; la lógica de compra vive en compras.html) -->
+  <script src="JS/comun/utils.js"></script>
+  <script src="JS/catalogo/almacenamiento.js"></script>
+  <script src="JS/catalogo/estado.js"></script>
+  <script src="JS/catalogo/descripciones-es.js"></script>
+  <script src="JS/catalogo/api.js"></script>
+  <script src="JS/catalogo/filtros.js"></script>
+  <script src="JS/catalogo/productos.js"></script>
+  <script src="JS/catalogo/visor-productos.js"></script>
+  <script src="JS/catalogo/carrito.js"></script>
+  <script src="JS/catalogo/panel-carrito.js"></script>
+  <script src="JS/catalogo/eventos.js"></script>
+  <script src="JS/catalogo/main.js"></script>
+</body>
+</html>
